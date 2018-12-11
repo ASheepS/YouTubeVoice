@@ -129,15 +129,16 @@ chrome.runtime.sendMessage({}, function(response) {
           <span id="controls">
             <button data-action="gravar" class="rd">G</button>
             <button data-action="pause" class="rw">||</button>
+            
+          </span>
+        </div>
+      `;
+  /*        Botões removidos da barra de funções
             <button data-action="rewind" class="rw">«</button>
             <button data-action="slower">-</button>
             <button data-action="faster">+</button>
             <button data-action="advance" class="rw">»</button>
-            <button data-action="display" class="hideButton">x</button>
-          </span>
-        </div>
-      `;
-
+            <button data-action="display" class="hideButton">x</button>*/
       
 
       shadow.innerHTML = shadowTemplate;
@@ -388,11 +389,11 @@ chrome.runtime.sendMessage({}, function(response) {
             console.log(result);
             if (result.toLowerCase().includes("youtube pause") || result.toLowerCase().includes("youtube play") || result.toLowerCase().includes("youtube por aí") || result.toLowerCase().includes("youtube projeto") || result.toLowerCase().includes("youtube foi") || result.toLowerCase().includes("youtube pou")|| result.toLowerCase().includes("youtube player")|| result.toLowerCase().includes("youtube pausa") || result.toLowerCase().includes("youtube pausar")|| result.toLowerCase().includes("youtube pause") || result.toLowerCase().includes("youtube paula") || result.toLowerCase().includes("youtube paulo")) {//if (result.toLowerCase() === 'pause') {
               playpause.click();
-            } else if(result.toLowerCase().includes("youtube fast") || result.toLowerCase().includes("youtube fest") || result.toLowerCase().includes("youtube festa") || result.toLowerCase().includes("youtube fácil") || result.toLowerCase().includes("youtube site") || result.toLowerCase().includes("youtube master")) {
-              var s = Math.min( (v.playbackRate < 0.1 ? 0.0 : v.playbackRate) + tc.settings.speedStep, 16);
+            } else if(result.toLowerCase().includes("youtube fast") || result.toLowerCase().includes("youtube fest") || result.toLowerCase().includes("youtube festa") || result.toLowerCase().includes("youtube fácil") || result.toLowerCase().includes("youtube site") || result.toLowerCase().includes("youtube master") || result.toLowerCase().includes("youtube fausto")) {
+              var s = Math.min( (v.playbackRate < 0.1 ? 0.0 : v.playbackRate) + 0.25/*tc.settings.speedStep*/, 16);
               v.playbackRate = Number(s.toFixed(2));
             } else if(result.toLowerCase().includes("youtube slow") || result.toLowerCase().includes("youtube flor") || result.toLowerCase().includes("youtube louco") || result.toLowerCase().includes("youtube louco") || result.toLowerCase().includes("youtube globo") || result.toLowerCase().includes("youtube vacilou") || result.toLowerCase().includes("retrovisor") || result.toLowerCase().includes("eu também estou") || result.toLowerCase().includes("eu tô bem louco") || result.toLowerCase().includes("eu tô precisando")) {
-              var s = Math.max(v.playbackRate - tc.settings.speedStep, 0.07);
+              var s = Math.max(v.playbackRate - 0.25/*tc.settings.speedStep*/, 0.07);
               v.playbackRate = Number(s.toFixed(2));
             } else if(result.toLowerCase().includes("youtube avançar") || result.toLowerCase().includes("youtube dançar") || result.toLowerCase().includes("youtube avançado")) {
               video.currentTime += parseInt(30);
@@ -403,7 +404,7 @@ chrome.runtime.sendMessage({}, function(response) {
             } else if(result.toLowerCase() === 'full') {
               video.webkitRequestFullscreen();
             } else if(result.toLowerCase().includes("youtube stop") || result.toLowerCase().includes("youtube top") || result.toLowerCase().includes("youtube is spop") || result.toLowerCase().includes("youtube is papo") || result.toLowerCase().includes("youtube histórico") || result.toLowerCase().includes("youtube estátua") || result.toLowerCase().includes("youtubers stop") || result.toLowerCase().includes("sorvetes top")) {
-              //manualStop=true;
+              manualStop=true;
             }
             
          }, false);

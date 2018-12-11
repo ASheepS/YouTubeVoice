@@ -1,7 +1,7 @@
 {
   "name": "Controlar YouTube por Voz",
   "short_name": "voiceControl",
-  "version": "1.5",
+  "version": "2.0",
   "manifest_version": 2,
   "description": "Pode dar comandos básicos para controlar o YouTube por voz",
   "icons": {
