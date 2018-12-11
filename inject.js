@@ -361,7 +361,7 @@ chrome.runtime.sendMessage({}, function(response) {
       showController(controller);
       playpause = document.getElementsByClassName("ytp-play-button")[0];
       video = document.getElementsByTagName("video")[0];
-      
+      manualStop = false;
       
      
 
@@ -377,6 +377,7 @@ chrome.runtime.sendMessage({}, function(response) {
           v.playbackRate = Number(s.toFixed(2));
         } else if (action === 'pause') {
           playpause.click();
+          manualStop = true;
         } else if (action === 'gravar') {        
           var recognition = new SpeechRecognition();
           recognition.start();
@@ -385,30 +386,24 @@ chrome.runtime.sendMessage({}, function(response) {
             console.log(e);
             var result = e.results[0][0].transcript;
             console.log(result);
-            if (result.toLowerCase().includes("play")) {//if (result.toLowerCase() === 'pause') {
+            if (result.toLowerCase().includes("youtube pause") || result.toLowerCase().includes("youtube play") || result.toLowerCase().includes("youtube por aí") || result.toLowerCase().includes("youtube projeto") || result.toLowerCase().includes("youtube foi") || result.toLowerCase().includes("youtube pou")|| result.toLowerCase().includes("youtube player")|| result.toLowerCase().includes("youtube pausa") || result.toLowerCase().includes("youtube pausar")|| result.toLowerCase().includes("youtube pause") || result.toLowerCase().includes("youtube paula") || result.toLowerCase().includes("youtube paulo")) {//if (result.toLowerCase() === 'pause') {
               playpause.click();
-            } else if (result.toLowerCase() === 'play') {
-              playpause.click();
-            } else if(result.toLowerCase() === 'fast') {
+            } else if(result.toLowerCase().includes("youtube fast") || result.toLowerCase().includes("youtube fest") || result.toLowerCase().includes("youtube festa") || result.toLowerCase().includes("youtube fácil") || result.toLowerCase().includes("youtube site") || result.toLowerCase().includes("youtube master")) {
               var s = Math.min( (v.playbackRate < 0.1 ? 0.0 : v.playbackRate) + tc.settings.speedStep, 16);
               v.playbackRate = Number(s.toFixed(2));
-            } else if(result.toLowerCase() === 'slow') {
+            } else if(result.toLowerCase().includes("youtube slow") || result.toLowerCase().includes("youtube flor") || result.toLowerCase().includes("youtube louco") || result.toLowerCase().includes("youtube louco") || result.toLowerCase().includes("youtube globo") || result.toLowerCase().includes("youtube vacilou") || result.toLowerCase().includes("retrovisor") || result.toLowerCase().includes("eu também estou") || result.toLowerCase().includes("eu tô bem louco") || result.toLowerCase().includes("eu tô precisando")) {
               var s = Math.max(v.playbackRate - tc.settings.speedStep, 0.07);
               v.playbackRate = Number(s.toFixed(2));
-            } else if(result.toLowerCase() === 'avançar') {
+            } else if(result.toLowerCase().includes("youtube avançar") || result.toLowerCase().includes("youtube dançar") || result.toLowerCase().includes("youtube avançado")) {
               video.currentTime += parseInt(30);
-            } else if(result.toLowerCase() === 'voltar') {
+            } else if(result.toLowerCase().includes("youtube voltar") || result.toLowerCase().includes("youtube avatar") || result.toLowerCase().includes("youtube roupa") || result.toLowerCase().includes("youtube fotos") || result.toLowerCase().includes("youtube votar") || result.toLowerCase().includes("youtube baltar") || result.toLowerCase().includes("youtube juntar") || result.toLowerCase().includes("youtube faltar") || result.toLowerCase().includes("eu tenho que voltar") || result.toLowerCase().includes("eu tenho que faltar") || result.toLowerCase().includes("eu tô perguntando") || result.toLowerCase().includes("tempo de voltar") || result.toLowerCase().includes("eu to voltando") || result.toLowerCase().includes("eu tô de volta") || result.toLowerCase().includes("eu quero ver outra") || result.toLowerCase().includes("eu te vejo voltar") || result.toLowerCase().includes("eu te vi voltar")) {
               video.currentTime -= parseInt(30);
-            } else if(result.toLowerCase() === 'reset') {
+            } else if(result.toLowerCase().includes("youtube reset") || result.toLowerCase().includes("youtube ressaca") || result.toLowerCase().includes("youtube resgate") || result.toLowerCase().includes("youtube rasante") || result.toLowerCase().includes("youtube arrasado") || result.toLowerCase().includes("youtube asap") || result.toLowerCase().includes("youtube 77") || result.toLowerCase().includes("youtube assado") || result.toLowerCase().includes("eu tô de ressaca") || result.toLowerCase().includes("eu estou bem cansado") || result.toLowerCase().includes("quero ver casaco") || result.toLowerCase().includes("eu tô querendo saber") || result.toLowerCase().includes("escrevi errado")) {
               resetSpeed(v, 1.0);
             } else if(result.toLowerCase() === 'full') {
               video.webkitRequestFullscreen();
-            } else if(result.toLowerCase() === 'stop') {
-              manualStop=true;
-            }
-
-            if (action === 'pause') {
-              manualStop=true;
+            } else if(result.toLowerCase().includes("youtube stop") || result.toLowerCase().includes("youtube top") || result.toLowerCase().includes("youtube is spop") || result.toLowerCase().includes("youtube is papo") || result.toLowerCase().includes("youtube histórico") || result.toLowerCase().includes("youtube estátua") || result.toLowerCase().includes("youtubers stop") || result.toLowerCase().includes("sorvetes top")) {
+              //manualStop=true;
             }
             
          }, false);
