@@ -49,16 +49,7 @@ chrome.runtime.sendMessage({}, function(response) {
 
   var forEach = Array.prototype.forEach;
 
-  var player;
-      function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-          }
-        });
-      }
-
+  
   function defineVideoController() {
     tc.videoController = function(target, parent) {
       if (target.dataset['vscid']) {
@@ -393,10 +384,12 @@ chrome.runtime.sendMessage({}, function(response) {
           recognition.addEventListener('result', function(e) {
             console.log(e);
             var result = e.results[0][0].transcript;
+            var videoPlayer = document.getElementById('videoPlayer');
+            //var player = document.querySelector(".html5-video-player");
+            //var isCurrentlyPlaying = player ? player.classList.contains("playing-mode") : false;
             console.log(result);
-            if (result.toLowerCase().includes("youtube pause") || result.toLowerCase().includes("youtube play") || result.toLowerCase().includes("youtube por aí") || result.toLowerCase().includes("youtube projeto") || result.toLowerCase().includes("youtube foi") || result.toLowerCase().includes("youtube pou")|| result.toLowerCase().includes("youtube player")|| result.toLowerCase().includes("youtube pausa") || result.toLowerCase().includes("youtube pausar")|| result.toLowerCase().includes("youtube pause") || result.toLowerCase().includes("youtube paula") || result.toLowerCase().includes("youtube paulo")) {//if (result.toLowerCase() === 'pause') {
+            if (result.toLowerCase().includes("youtube pause") || result.toLowerCase().includes("youtube play") || result.toLowerCase().includes("youtube por aí") || result.toLowerCase().includes("youtube projeto") || result.toLowerCase().includes("youtube foi") || result.toLowerCase().includes("youtube pou")|| result.toLowerCase().includes("youtube player")|| result.toLowerCase().includes("youtube pausa") || result.toLowerCase().includes("youtube pausar")|| result.toLowerCase().includes("youtube pause") || result.toLowerCase().includes("youtube paula") || result.toLowerCase().includes("youtube paulo") || result.toLowerCase().includes("youtube pair") || result.toLowerCase().includes("youtube pai") || result.toLowerCase().includes("youtube pânico")) {//if (result.toLowerCase() === 'pause') {
               playpause.click();
-              //player.nextVideo();
             } else if(result.toLowerCase().includes("youtube fast") || result.toLowerCase().includes("youtube fest") || result.toLowerCase().includes("youtube festa") || result.toLowerCase().includes("youtube fácil") || result.toLowerCase().includes("youtube site") || result.toLowerCase().includes("youtube master") || result.toLowerCase().includes("youtube fausto")) {
               var s = Math.min( (v.playbackRate < 0.1 ? 0.0 : v.playbackRate) + 0.25/*tc.settings.speedStep*/, 16);
               v.playbackRate = Number(s.toFixed(2));
@@ -415,6 +408,8 @@ chrome.runtime.sendMessage({}, function(response) {
               manualStop=true;
             } else if(result.toLowerCase().includes("youtube anterior") || result.toLowerCase().includes("youtube interior")) {
               history.go(-1);
+            } else if(result.toLowerCase().includes("youtube próximo")) {
+              document.getElementsByClassName('ytp-next-button')[0].click();
             }
             
          }, false);
