@@ -49,6 +49,16 @@ chrome.runtime.sendMessage({}, function(response) {
 
   var forEach = Array.prototype.forEach;
 
+  var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
   function defineVideoController() {
     tc.videoController = function(target, parent) {
       if (target.dataset['vscid']) {
@@ -357,15 +367,12 @@ chrome.runtime.sendMessage({}, function(response) {
       var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
       //var recognition = new SpeechRecognition();
       var result;
-      //Gravando a voz**********************
 
       showController(controller);
       playpause = document.getElementsByClassName("ytp-play-button")[0];
       video = document.getElementsByTagName("video")[0];
       manualStop = false;
       
-     
-
       if (!v.classList.contains('vsc-cancelled')) {
         if (action === 'rewind') {
           v.currentTime -= tc.settings.rewindTime;
@@ -389,6 +396,7 @@ chrome.runtime.sendMessage({}, function(response) {
             console.log(result);
             if (result.toLowerCase().includes("youtube pause") || result.toLowerCase().includes("youtube play") || result.toLowerCase().includes("youtube por aí") || result.toLowerCase().includes("youtube projeto") || result.toLowerCase().includes("youtube foi") || result.toLowerCase().includes("youtube pou")|| result.toLowerCase().includes("youtube player")|| result.toLowerCase().includes("youtube pausa") || result.toLowerCase().includes("youtube pausar")|| result.toLowerCase().includes("youtube pause") || result.toLowerCase().includes("youtube paula") || result.toLowerCase().includes("youtube paulo")) {//if (result.toLowerCase() === 'pause') {
               playpause.click();
+              //player.nextVideo();
             } else if(result.toLowerCase().includes("youtube fast") || result.toLowerCase().includes("youtube fest") || result.toLowerCase().includes("youtube festa") || result.toLowerCase().includes("youtube fácil") || result.toLowerCase().includes("youtube site") || result.toLowerCase().includes("youtube master") || result.toLowerCase().includes("youtube fausto")) {
               var s = Math.min( (v.playbackRate < 0.1 ? 0.0 : v.playbackRate) + 0.25/*tc.settings.speedStep*/, 16);
               v.playbackRate = Number(s.toFixed(2));
@@ -405,6 +413,8 @@ chrome.runtime.sendMessage({}, function(response) {
               video.webkitRequestFullscreen();
             } else if(result.toLowerCase().includes("youtube stop") || result.toLowerCase().includes("youtube top") || result.toLowerCase().includes("youtube is spop") || result.toLowerCase().includes("youtube is papo") || result.toLowerCase().includes("youtube histórico") || result.toLowerCase().includes("youtube estátua") || result.toLowerCase().includes("youtubers stop") || result.toLowerCase().includes("sorvetes top")) {
               manualStop=true;
+            } else if(result.toLowerCase().includes("youtube anterior") || result.toLowerCase().includes("youtube interior")) {
+              history.go(-1);
             }
             
          }, false);
