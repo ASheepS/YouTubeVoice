@@ -1,104 +1,55 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Video Speed Controller: Options</title>
-		<link rel="stylesheet" href="options.css" />
-		<script src="options.js"></script>
-	</head>
-	<body>
-		<header>
-			<h1>Video Speed Controller</h1>
-		</header>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="estilo.css">
+<link rel="shortcut icon" type="image/png" href="fav.png"/>
+<title>Voice Maker+</title>
+</head>
+<body>
+<div class="bgimg-1">
+  <div class="caption">
+  <span class="border">Voice Maker+</span>
+  </div>
+</div>
 
-    <section>
-      <h3>Shortcuts</h3>
-      <div class="row">
-        <label for="rewindKeyInput">Rewind</label>
-        <input id="rewindKeyInput" placeholder="press a key" type="text" value=""/>
-      </div>
-      <div class="row">
-        <label for="advanceKeyInput">Advance</label>
-        <input id="advanceKeyInput" placeholder="press a key" type="text" value=""/>
-      </div>
-      <div class="row">
-        <label for="resetKeyInput">Reset speed</label>
-        <input id="resetKeyInput" placeholder="press a key" type="text" value=""/>
-      </div>
-      <div class="row">
-        <label for="slowerKeyInput">Decrease speed</label>
-        <input id="slowerKeyInput" placeholder="press a key" type="text" value=""/>
-      </div>
-      <div class="row">
-        <label for="fasterKeyInput">Increase speed</label>
-        <input id="fasterKeyInput" placeholder="press a key" type="text" value=""/>
-      </div>
-      <div class="row">
-        <label for="fastKeyInput">Preferred speed</label>
-        <input id="fastKeyInput" placeholder="press a key" type="text" value=""/>
-      </div>
-      <div class="row">
-        <label for="displayKeyInput">Show/hide controller</label>
-        <input id="displayKeyInput" placeholder="press a key" type="text" value=""/>
-      </div>
-      <div class="row">
-          <label for="startHidden">Hide controller by default</label>
-          <input id="startHidden" type="checkbox"/>
-      </div>
-    </section>
+<div style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
+  <h3 style="text-align:center;">Visão Geral</h3>
+  <p>O "Voice Maker +" é uma extensão para o chrome desenvolvida para a cadeira de Multimídia 2018.2 ministrada pelo professor Giordano Ribeiro 
+    do Centro de Informática - UFPE. Com ela, é possível executar tarefas que seriam manuais através de comandos simples de voz. Atualmente a 
+    versão 1.0 funciona para o Youtube, mas também é possível a compatibilidade com Facebook, Vine, Netflix e entre outras. Planejamos que nas 
+    outras versões da extensão isso se torne possível.</p>
+</div>
+<div style="position:justify;">
+</div>
+<div style="color: #777;background-color:white;text-align:center;padding:1px 80px;text-align: justify;">
+  <h3 style="text-align:center;">Como Usar?</h3>
+  <p>Após o download da extensão, siga os passos abaixo para instalar a mesma no seu navegador: </p>
+  <p>1 - Abra o Google Chrome e acesse Menu > Mais Ferramentas > Extensões.</p>
+  <p>2 - Clique em Modo do desenvolvedor > Carregar sem compactação.</p>
+  <p>3 - Navegue e Selecione a pasta extensaoMultimidia que contém o manifest.json e logotipo.</p>
+  <p>4 - Abra uma nova guia no Google Chrome para o Youtube e veja se tudo funciona corretamente.</p>
+</div>
+<div style="position:justify;">
+  </div>
+  <div style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
+    <h3 style="text-align:center;">Comandos de Voz</h3>
+    <p>→ Youtube Pause - pausa o vídeo
+    <p>→ Youtube Play - retoma o vídeo</p>
+    <p>→ Youtube Fast - aumenta a velocidade em 25%</p>
+    <p>→ Youtube Slow - diminui a velocidade em 25%</p>
+    <p>→ Youtube Próximo - próximo vídeo </p>
+    <p>→ Youtube Anterior - volta para o vídeo anterior </p>
+    <p>→ Youtube Avançar - avança 30 segundos</p>
+    <p>→ Youtube Voltar -  volta 30 segundos</p>
+    <p>→ Youtube Stop - desligar o microfone da extensão</p>
+</div>
 
-    <section>
-			<h3>Other</h3>
-  		<div class="row">
-          <label for="rewindTime">Rewind Time (s)</label>
-          <input id="rewindTime" type="text" value=""/>
-      </div>
-  	<div class="row">
-          <label for="advanceTime">Advance Time (s)</label>
-          <input id="advanceTime" type="text" value=""/>
-      </div>
-      <div class="row">
-          <label for="speedStep">Speed Change Step</label>
-          <input id="speedStep" type="text" value=""/>
-      </div>
-      <div class="row">
-          <label for="fastSpeed">Preferred Speed (x)</label>
-          <input id="fastSpeed" type="text" value=""/>
-      </div>
-      <div class="row">
-          <label for="rememberSpeed">Remember Playback Speed</label>
-          <input id="rememberSpeed" type="checkbox"/>
-      </div>
-      <div class="row">
-          <label for="blacklist">Blacklisted sites on which extension is disabled<br/>(one per line)</label>
-          <textarea id="blacklist" rows="10" cols="50"></textarea>
-      </div>
-    </section>
+<div class="bgimg-1">
+  <div class="caption">
+  <span class="border"><a href="https://www.dropbox.com/s/hm85pm9cm6yn0nz/extensaoMultimidia-20181212T131456Z-001.zip?dl=0" target="_blank">CLIQUE PARA BAIXAR</a></span>
+  </div>
 
-    <button id="save">Save</button>
-		<button id="restore">Restore Defaults</button>
-
-    <div id="status"></div>
-
-    <div id="faq">
-      <hr />
-
-      <h4>The video controls are not showing up?</h4>
-      <p>This extension is only compatible with HTML5 video. If you don't see the controls showing up, chances are you are viewing a Flash video. If you want to confirm, try right-clicking on the video and inspect the menu: if it mentions flash, then that's the issue. That said, <b>most sites will fallback to HTML5</b> if they detect that Flash it not available. You can try manually disabling Flash plugin in Chrome:</p>
-
-      <ul>
-        <li>In a new tab, navigate to <code>chrome://settings/content/flash</code></li>
-        <li>Disable "Allow sites to run Flash"</li>
-        <li>Restart your browser and try playing your video again</li>
-      </ul>
-
-      <h4>The speed controls are not showing up for local videos?</h4>
-      <p>To enable playback of local media (e.g. File &gt; Open File), you need to grant additional permissions to the extension.</p>
-
-      <ul>
-        <li>In a new tab, navigate to <code>chrome://extensions</code></li>
-        <li>Find "Video Speed Controller" extension in the list and enable "Allow access to file URLs"</li>
-        <li>Open a new tab and try opening a local file, the controls should show up</li>
-      </ul>
-    </div>
-  </body>
+</body>
 </html>
